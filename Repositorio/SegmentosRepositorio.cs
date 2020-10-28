@@ -1,0 +1,81 @@
+﻿namespace APIADM2K12.Repositorio
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.EntityFrameworkCore;
+    using Entidades;
+    using Models;
+
+    public class SegmentosRepositorio : IRepositorio<SaSegmento>
+    {
+        readonly ConexionAlterna conn = new ConexionAlterna();
+
+        #region Find
+        public SaSegmento Find(string key, string empresaDB)
+        {
+            using var db = new ProfitAdmin2K12(conn.GetDbContextOptions(empresaDB));
+            return db.SaSegmento.FirstOrDefault(s => s.CoSeg.Trim() == key.Trim());
+        }
+        #endregion
+
+        #region GetAll
+        public IEnumerable<SaSegmento> GetAll(string empresaDB)
+        {
+            using var db = new ProfitAdmin2K12(conn.GetDbContextOptions(empresaDB));
+            return db.SaSegmento.ToList();
+        }
+        #endregion
+
+        #region Remove
+        public Response Remove(string key, string user, string empresaDB)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region Save
+        public Response Save(SaSegmento item, string empresaDB)
+        {
+            try
+            {
+                using var db = new ProfitAdmin2K12(conn.GetDbContextOptions(empresaDB));
+
+                SaSegmento existSegmento = Find(item.CoSeg, empresaDB);
+                if (existSegmento != null)
+                {
+                    throw new ArgumentException($"El codigo del segmento '{item.CoSeg.Trim()}' se encuentra registrado.");
+                }
+                else
+                {
+                    db.Entry(item).State = EntityState.Added;
+                    db.SaveChanges();
+                    return new Response { Status = "OK", Message = $"Se ha registrado el segmento ID: [{item.CoSeg.Trim()}]" };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Response { Status = "ERROR", Message = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message };
+            }
+        }
+        #endregion
+
+        #region Update
+        public Response Update(SaSegmento item, string empresaDB)
+        {
+            try
+            {
+                using var db = new ProfitAdmin2K12(conn.GetDbContextOptions(empresaDB));
+
+                db.Entry(item).State = EntityState.Modified;
+                db.SaveChanges();
+                return new Response { Status = "OK", Message = "Actualización realizada con éxito." };
+            }
+            catch (Exception ex)
+            {
+                return new Response { Status = "ERROR", Message = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message };
+            }
+        } 
+        #endregion
+    }
+}
