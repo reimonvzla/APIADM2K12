@@ -82,7 +82,7 @@
                     item.TipoPer = proveedorRapido.CTipoPer;
                     item.FechaReg = DateTime.Now;
                     item.CoMone = proveedorRapido.GMoneda;
-                    item.CoTab = "8";
+                    item.CoTab = null;
 
                     db.Entry(item).State = EntityState.Added;
                     db.SaveChanges();
