@@ -19,7 +19,9 @@
             .Build();
 
             string DataSource = configuration["Servidor"];
-            String connString = $"Server={DataSource};Database={dataBase};User Id=profit;Password=profit;";
+            string KeySqlUser = configuration["UsuarioSql"];
+            string KeySqlPass = configuration["PasswordSql"];
+            String connString = $"Server={DataSource};Database={dataBase};User Id={KeySqlUser};Password={KeySqlPass};";
 
             return new DbContextOptionsBuilder<ProfitAdmin2K12>()
                   .UseSqlServer(connString).Options;
