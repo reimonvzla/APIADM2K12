@@ -231,25 +231,25 @@
                 else
                 {
                     #region Cliente rápido como configuracion de nuevos clientes
-                    ParEmp clienteRapido = db.ParEmp.FirstOrDefault();
-                    if (string.IsNullOrEmpty(clienteRapido.VTipCli)) throw new ArgumentException("No existe configurado el tipo de cliente en parametros de la empresa (Cliente rápido).");
-                    if (string.IsNullOrEmpty(clienteRapido.VCondPago)) throw new ArgumentException("No existe configurado la condicion de pago en parametros de la empresa (Cliente rápido).");
-                    if (string.IsNullOrEmpty(clienteRapido.VCoVen)) throw new ArgumentException("No existe configurado el vendedor en parametros de la empresa (Cliente rápido).");
-                    if (string.IsNullOrEmpty(clienteRapido.VCtaIngEgr)) throw new ArgumentException("No existe configurado la cuenta ingreso/egreso en parametros de la empresa (Cliente rápido).");
-                    if (string.IsNullOrEmpty(clienteRapido.VCoSeg)) throw new ArgumentException("No existe configurado el segmento en parametros de la empresa (Cliente rápido).");
-                    if (string.IsNullOrEmpty(clienteRapido.VCoZon)) throw new ArgumentException("No existe configurado la zona en parametros de la empresa (Cliente rápido).");
-                    if (string.IsNullOrEmpty(clienteRapido.VTipoPer)) throw new ArgumentException("No existe configurado el tipo de persona en parametros de la empresa (Cliente rápido).");
+                    //ParEmp clienteRapido = db.ParEmp.FirstOrDefault();
+                    //if (string.IsNullOrEmpty(clienteRapido.VTipCli)) throw new ArgumentException("No existe configurado el tipo de cliente en parametros de la empresa (Cliente rápido).");
+                    //if (string.IsNullOrEmpty(clienteRapido.VCondPago)) throw new ArgumentException("No existe configurado la condicion de pago en parametros de la empresa (Cliente rápido).");
+                    //if (string.IsNullOrEmpty(clienteRapido.VCoVen)) throw new ArgumentException("No existe configurado el vendedor en parametros de la empresa (Cliente rápido).");
+                    //if (string.IsNullOrEmpty(clienteRapido.VCtaIngEgr)) throw new ArgumentException("No existe configurado la cuenta ingreso/egreso en parametros de la empresa (Cliente rápido).");
+                    //if (string.IsNullOrEmpty(clienteRapido.VCoSeg)) throw new ArgumentException("No existe configurado el segmento en parametros de la empresa (Cliente rápido).");
+                    //if (string.IsNullOrEmpty(clienteRapido.VCoZon)) throw new ArgumentException("No existe configurado la zona en parametros de la empresa (Cliente rápido).");
+                    //if (string.IsNullOrEmpty(clienteRapido.VTipoPer)) throw new ArgumentException("No existe configurado el tipo de persona en parametros de la empresa (Cliente rápido).");
                     #endregion
 
-                    item.TipCli = clienteRapido.VTipCli;
-                    item.CondPag = clienteRapido.VCondPago;
-                    item.CoVen = clienteRapido.VCoVen;
-                    item.CoCtaIngrEgr = clienteRapido.VCtaIngEgr;
-                    item.CoSeg = clienteRapido.VCoSeg;
-                    item.CoZon = clienteRapido.VCoZon;
-                    item.TipoPer = clienteRapido.VTipoPer;
+                    //item.TipCli = clienteRapido.VTipCli;
+                    //item.CondPag = clienteRapido.VCondPago;
+                    //item.CoVen = clienteRapido.VCoVen;
+                    //item.CoCtaIngrEgr = clienteRapido.VCtaIngEgr;
+                    //item.CoSeg = clienteRapido.VCoSeg;
+                    //item.CoZon = clienteRapido.VCoZon;
+                    //item.TipoPer = clienteRapido.VTipoPer;
                     item.FechaReg = DateTime.Now;
-                    item.CoMone = clienteRapido.GMoneda;
+                    //item.CoMone =  db.ParEmp.FirstOrDefault().GMoneda;
 
                     db.Entry(item).State = EntityState.Added;
                     db.SaveChanges();

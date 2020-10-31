@@ -65,24 +65,24 @@
                 else
                 {
                     #region Proveedor rapido como configuracion de nuevos proveedores
-                    ParEmp proveedorRapido = db.ParEmp.FirstOrDefault();
-                    if (string.IsNullOrEmpty(proveedorRapido.CTipPro)) throw new ArgumentException("No existe configurado el tipo de proveedor en parametros de la empresa (Proveedor rápido).");
-                    if (string.IsNullOrEmpty(proveedorRapido.CCondPago)) throw new ArgumentException("No existe configurado la condicion de pago en parametros de la empresa (Proveedor rápido).");
-                    if (string.IsNullOrEmpty(proveedorRapido.CCtaIngEgr)) throw new ArgumentException("No existe configurado la cuenta ingreso/egreso en parametros de la empresa (Proveedor rápido).");
-                    if (string.IsNullOrEmpty(proveedorRapido.CCoSeg)) throw new ArgumentException("No existe configurado el segmento en parametros de la empresa (Proveedor rápido).");
-                    if (string.IsNullOrEmpty(proveedorRapido.CCoZon)) throw new ArgumentException("No existe configurado la zona en parametros de la empresa (Proveedor rápido).");
-                    if (string.IsNullOrEmpty(proveedorRapido.CTipoPer)) throw new ArgumentException("No existe configurado el tipo de persona en parametros de la empresa (Proveedor rápido).");
+                    //ParEmp proveedorRapido = db.ParEmp.FirstOrDefault();
+                    //if (string.IsNullOrEmpty(proveedorRapido.CTipPro)) throw new ArgumentException("No existe configurado el tipo de proveedor en parametros de la empresa (Proveedor rápido).");
+                    //if (string.IsNullOrEmpty(proveedorRapido.CCondPago)) throw new ArgumentException("No existe configurado la condicion de pago en parametros de la empresa (Proveedor rápido).");
+                    //if (string.IsNullOrEmpty(proveedorRapido.CCtaIngEgr)) throw new ArgumentException("No existe configurado la cuenta ingreso/egreso en parametros de la empresa (Proveedor rápido).");
+                    //if (string.IsNullOrEmpty(proveedorRapido.CCoSeg)) throw new ArgumentException("No existe configurado el segmento en parametros de la empresa (Proveedor rápido).");
+                    //if (string.IsNullOrEmpty(proveedorRapido.CCoZon)) throw new ArgumentException("No existe configurado la zona en parametros de la empresa (Proveedor rápido).");
+                    //if (string.IsNullOrEmpty(proveedorRapido.CTipoPer)) throw new ArgumentException("No existe configurado el tipo de persona en parametros de la empresa (Proveedor rápido).");
                     #endregion
 
-                    item.TipPro = proveedorRapido.CTipPro;
-                    item.CondPag = proveedorRapido.CCondPago;
-                    item.CoCtaIngrEgr = proveedorRapido.CCtaIngEgr;
-                    item.CoSeg = proveedorRapido.CCoSeg;
-                    item.CoZon = proveedorRapido.CCoZon;
-                    item.TipoPer = proveedorRapido.CTipoPer;
+                    //item.TipPro = proveedorRapido.CTipPro;
+                    //item.CondPag = proveedorRapido.CCondPago;
+                    //item.CoCtaIngrEgr = proveedorRapido.CCtaIngEgr;
+                    //item.CoSeg = proveedorRapido.CCoSeg;
+                    //item.CoZon = proveedorRapido.CCoZon;
+                    //item.TipoPer = proveedorRapido.CTipoPer;
                     item.FechaReg = DateTime.Now;
-                    item.CoMone = proveedorRapido.GMoneda;
-                    item.CoTab = null;
+                    //item.CoMone = proveedorRapido.GMoneda;
+                    //item.CoTab = null;
 
                     db.Entry(item).State = EntityState.Added;
                     db.SaveChanges();

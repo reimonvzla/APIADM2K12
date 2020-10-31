@@ -64,15 +64,13 @@
                 }
                 else
                 {
-                    item.FechaReg = DateTime.Now;
                     item.Garantia = "n/a";
-                    item.TipoImp = "1";
                     db.Entry(item).State = EntityState.Added;
                     db.SaveChanges();
 
                     SaveArtCaracteristicas(item, empresaDB);
                     SaveArtUnidad(item, empresaDB);
-                    SaveArtPrecio(item, empresaDB);
+                    //SaveArtPrecio(item, empresaDB);
 
                     return new Response { Status = "OK", Message = $"Se ha registrado el artículo ID: [{item.CoArt.Trim()}]" };
                 }
@@ -94,7 +92,7 @@
                 {
                     #region Campos
                     CoArt = art.CoArt,
-                    CoUni = art.Campo1,
+                    CoUni = art.Campo8,
                     Relacion = true,
                     Equivalencia = 1,
                     UsoVenta = true,
