@@ -192,9 +192,12 @@
                 }
                 #endregion
 
+
                 #region Consecutivo numero de orden de compra
-                string codigoConsecutivoOrdenCompra = "OCOM_NUM";
-                string numeroOrdenCompra =  new ObtenerProximoConsecutivo().GetProximoNumero(codigoConsecutivoOrdenCompra, item.CoSucuIn, empresaDB);
+                //string codigoConsecutivoOrdenCompra = "OCOM_NUM";
+                //string numeroOrdenCompra =  new ObtenerProximoConsecutivo().GetProximoNumero(codigoConsecutivoOrdenCompra, item.CoSucuIn, empresaDB);
+                string numeroOrdenCompra = item.DocNum;
+
                 #endregion
 
                 #region Insertar orden de compra
@@ -215,9 +218,14 @@
                     iOrdenCompra.DesArt = !articulo.Generico ? string.Empty : iOrdenCompra.DesArt;
                     iOrdenCompra.MontoImp = iOrdenCompra.RengNeto * PorcTasa / 100;
                     db.Entry(iOrdenCompra).State = EntityState.Added;
+                    item.MontoImp += iOrdenCompra.RengNeto * PorcTasa / 100;
+                    item.TotalBruto += iOrdenCompra.RengNeto;
+                    item.TotalNeto += iOrdenCompra.RengNeto + (iOrdenCompra.RengNeto * PorcTasa / 100);
+                    item.Saldo += iOrdenCompra.RengNeto + (iOrdenCompra.RengNeto * PorcTasa / 100);
+
                 }
                 #endregion
-                
+
                 db.SaveChanges();
 
                 return new Response { Status = "OK", Message = "Transacción realizada con éxito.", NroDocumentoGenerado01 = numeroOrdenCompra };
