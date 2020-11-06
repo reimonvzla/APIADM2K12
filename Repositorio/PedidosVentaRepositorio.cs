@@ -200,8 +200,9 @@
                 #endregion
 
                 #region Consecutivo numero de pedido
-                string codigoConsecutivoPedido = "PCLI_NUM";
-                string numeroPedido = new ObtenerProximoConsecutivo().GetProximoNumero(codigoConsecutivoPedido, item.CoSucuIn, empresaDB);
+                //string codigoConsecutivoPedido = "PCLI_NUM";
+                //string numeroPedido = new ObtenerProximoConsecutivo().GetProximoNumero(codigoConsecutivoPedido, item.CoSucuIn, empresaDB);
+                string numeroPedido = item.DocNum;
                 #endregion
 
                 #region Insertar pedido
@@ -209,7 +210,7 @@
                 item.CoCond = cliente.CondPag;
                 //item.Tasa = moneda.Cambio;
                 item.CoVen = cliente.CoVen;
-                item.CoTran = transporte.CoTran;
+                //item.CoTran = transporte.CoTran;
                 db.Entry(item).State = EntityState.Added;
                 #endregion
 
@@ -217,12 +218,15 @@
                 foreach (var iPedidoReng in item.SaPedidoVentaReng)
                 {
                     decimal PorcTasa = new ObtenerISV().GetTasaIva(iPedidoReng.TipoImp, item.FecEmis, empresaDB).PorcTasa;
-                    
+
                     iPedidoReng.DocNum = numeroPedido;
                     iPedidoReng.PorcImp = PorcTasa;
                     iPedidoReng.DesArt = !articulo.Generico ? string.Empty : iPedidoReng.DesArt;
                     iPedidoReng.MontoImp = iPedidoReng.RengNeto * PorcTasa / 100;
-
+                    item.MontoImp += iPedidoReng.RengNeto * PorcTasa / 100;
+                    item.TotalBruto += iPedidoReng.RengNeto;
+                    item.TotalNeto += iPedidoReng.RengNeto + (iPedidoReng.RengNeto * PorcTasa / 100);
+                    item.Saldo += iPedidoReng.RengNeto + (iPedidoReng.RengNeto * PorcTasa / 100);
                     db.Entry(iPedidoReng).State = EntityState.Added;
                 }
                 #endregion
@@ -300,9 +304,14 @@
             #endregion
 
             #region Verificar transporte
+            //SaTransporte transporte = new TransportesRepositorio().Find(obj.CoTran, empresaDB);
+            //if (transporte == null) throw new ArgumentException($"El transporte [{obj.CoTran.Trim()}] no existe");
+
+            /* j.t 03-10-2020
             using var db = new ProfitAdmin2K12(conn.GetDbContextOptions(empresaDB));
-            transporte = db.SaTransporte.FirstOrDefault(t => !string.IsNullOrEmpty(t.Campo8));
+            transporte = db.SaTransporte.FirstOrDefault(t => t.CoTran.Trim()=obj.CoTran);
             if (transporte == null) throw new ArgumentException("No se encontró un transporte marcado en campo adicional 8...");
+            */
             #endregion
 
         }

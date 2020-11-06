@@ -64,7 +64,8 @@
                 TotalBruto = ordencompra.TotalBruto,
                 MontoImp = ordencompra.MontoImp,
                 TotalNeto = ordencompra.TotalNeto,
-                Saldo = ordencompra.Saldo
+                Saldo = ordencompra.Saldo,
+                Comentario = ordencompra.Comentario
                 #endregion
             };
 
