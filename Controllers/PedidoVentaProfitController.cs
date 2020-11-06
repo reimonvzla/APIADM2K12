@@ -83,6 +83,8 @@
                     CoPrecio = iDetalle.CoPrecio,
                     PrecVta = iDetalle.PrecVta,
                     PrecVtaOm = iDetalle.PrecVtaOm,
+                    PorcDesc = iDetalle.PorcDesc,
+                    MontoDesc = iDetalle.MontoDesc,
                     TipoImp = iDetalle.TipoImp,
                     RengNeto = iDetalle.RengNeto,
                     Pendiente = iDetalle.Pendiente,
@@ -91,7 +93,7 @@
                     CoSucuIn = iDetalle.CoSucuIn,
                     CoUsMo = iDetalle.CoUsMo,
                     FeUsMo = iDetalle.FeUsMo,
-                    CoSucuMo = iDetalle.CoSucuMo
+                    CoSucuMo = iDetalle.CoSucuMo,
                     #endregion
                 });
             } 

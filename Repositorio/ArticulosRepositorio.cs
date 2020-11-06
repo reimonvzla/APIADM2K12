@@ -70,7 +70,7 @@
 
                     SaveArtCaracteristicas(item, empresaDB);
                     SaveArtUnidad(item, empresaDB);
-                    //SaveArtPrecio(item, empresaDB);
+                    SaveArtPrecio(item, empresaDB);
 
                     return new Response { Status = "OK", Message = $"Se ha registrado el artículo ID: [{item.CoArt.Trim()}]" };
                 }

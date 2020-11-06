@@ -200,7 +200,7 @@
                 #region Insertar orden de compra
                 item.DocNum = numeroOrdenCompra;
                 item.CoCond = proveedor.CondPag;
-                item.Tasa = moneda.Cambio;
+                //item.Tasa = moneda.Cambio;
                 item.Nac = proveedor.Nacional;
                 db.Entry(item).State = EntityState.Added;
                 #endregion

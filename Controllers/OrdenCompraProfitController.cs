@@ -84,11 +84,14 @@
                     CoAlma = iDetalle.CoAlma,
                     CoSucuIn = iDetalle.CoSucuIn,
                     TipoImp = iDetalle.TipoImp,
+                    PorcDesc = iDetalle.PorcDesc,
+                    MontoDesc = iDetalle.MontoDesc,
                     CoUsIn = iDetalle.CoUsIn,
                     FeUsIn = iDetalle.FeUsIn,
                     FeUsMo = iDetalle.FeUsMo,
                     CoUsMo = iDetalle.CoUsMo,
-                    CoSucuMo=iDetalle.CoSucuMo
+                    CoSucuMo = iDetalle.CoSucuMo,
+                    CostUnitOm = iDetalle.CostUnitOm
                     #endregion
                 });
             } 

@@ -207,7 +207,7 @@
                 #region Insertar pedido
                 item.DocNum = numeroPedido;
                 item.CoCond = cliente.CondPag;
-                item.Tasa = moneda.Cambio;
+                //item.Tasa = moneda.Cambio;
                 item.CoVen = cliente.CoVen;
                 item.CoTran = transporte.CoTran;
                 db.Entry(item).State = EntityState.Added;
