@@ -15,7 +15,7 @@
         SaArticulo articulo;
         SaArtUnidad artunidad;
         SaMoneda moneda;
-        SaTransporte transporte;
+        //SaTransporte transporte;
 
         #region Find
         public SaPedidoVenta Find(string key, string empresaDB)
