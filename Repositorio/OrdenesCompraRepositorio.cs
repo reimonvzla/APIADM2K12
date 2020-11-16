@@ -215,7 +215,7 @@
 
                     iOrdenCompra.DocNum = numeroOrdenCompra;
                     iOrdenCompra.PorcImp = PorcTasa;
-                    iOrdenCompra.DesArt = !articulo.Generico ? string.Empty : iOrdenCompra.DesArt;
+                    iOrdenCompra.DesArt = !articulo.Generico ? null : iOrdenCompra.DesArt;
                     iOrdenCompra.MontoImp = iOrdenCompra.RengNeto * PorcTasa / 100;
                     db.Entry(iOrdenCompra).State = EntityState.Added;
                     item.MontoImp += iOrdenCompra.RengNeto * PorcTasa / 100;

@@ -221,7 +221,7 @@
 
                     iPedidoReng.DocNum = numeroPedido;
                     iPedidoReng.PorcImp = PorcTasa;
-                    iPedidoReng.DesArt = !articulo.Generico ? string.Empty : iPedidoReng.DesArt;
+                    iPedidoReng.DesArt = !articulo.Generico ? null : iPedidoReng.DesArt;
                     iPedidoReng.MontoImp = iPedidoReng.RengNeto * PorcTasa / 100;
                     item.MontoImp += iPedidoReng.RengNeto * PorcTasa / 100;
                     item.TotalBruto += iPedidoReng.RengNeto;
