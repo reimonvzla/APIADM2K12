@@ -92,7 +92,8 @@
                     FeUsMo = iDetalle.FeUsMo,
                     CoUsMo = iDetalle.CoUsMo,
                     CoSucuMo = iDetalle.CoSucuMo,
-                    CostUnitOm = iDetalle.CostUnitOm
+                    CostUnitOm = iDetalle.CostUnitOm,
+                    Comentario = iDetalle.Comentario
                     #endregion
                 });
             } 

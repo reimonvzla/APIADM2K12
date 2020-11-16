@@ -94,6 +94,7 @@
                     CoUsMo = iDetalle.CoUsMo,
                     FeUsMo = iDetalle.FeUsMo,
                     CoSucuMo = iDetalle.CoSucuMo,
+                    Comentario = iDetalle.Comentario
                     #endregion
                 });
             } 

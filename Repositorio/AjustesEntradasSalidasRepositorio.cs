@@ -147,7 +147,7 @@
                     ,@deCantidad={iAjuste.TotalArt}
                     ,@sTipoStock='ACT'
                     ,@bSumarStock={true}
-                    ,@bPermiteStockNegativo={true}";
+                    ,@bPermiteStockNegativo={false}";
                     int result = db.Database.ExecuteSqlInterpolated(stockPorLlegar);
                 }
                 #endregion

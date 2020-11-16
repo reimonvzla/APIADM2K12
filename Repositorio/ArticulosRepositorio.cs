@@ -121,15 +121,15 @@
 
                 var Qry = db.SaArticulo.FirstOrDefault(a => a.CoArt.Trim() == item.CoArt.Trim());
                 Qry.ArtDes = item.ArtDes;
+                Qry.Comentario = item.Comentario;
                 Qry.CoUsMo = item.CoUsIn;
                 Qry.FeUsMo = item.FeUsIn;
                 Qry.MontComi = item.MontComi;
 
                 db.Entry(Qry).State = EntityState.Modified;
                 db.SaveChanges();
-                
-                UpdateSaArtPrecio(item, empresaDB);
-
+                SaveArtPrecio(item, empresaDB);
+                //UpdateSaArtPrecio(item, empresaDB);
                 return new Response { Status = "OK", Message = "Actualización realizada con éxito." };
             }
             catch (Exception ex)
@@ -162,11 +162,11 @@
         private void SaveArtPrecio(SaArticulo art, string empresaDB)
         {
             using var db = new ProfitAdmin2K12(conn.GetDbContextOptions(empresaDB));
-
+            //'2020-01-01 00:00:00'
             FormattableString saArtPrecio = $@"EXEC pInsertarRenglonesPrecioArticulo @iRENG_NUM=1
                         ,@demonto={art.MontComi},@dhasta=default,@sco_art={art.CoArt.Trim()}
-                        ,@sCo_Precio='01',@sCo_Alma='TODOS',@dDesde='2020-01-01 00:00:00'
-                        ,@bPrecioOm=0,@bInactivo=0,@sCo_Mone={db.ParEmp.FirstOrDefault().GMoneda.Trim()}
+                        ,@sCo_Precio='01',@sCo_Alma='TODOS',@dDesde={DateTime.Now}
+                        ,@bPrecioOm=0,@bInactivo=0,@sCo_Mone={db.ParEmp.FirstOrDefault().IMonedaArticulo.Trim()}
                         ,@sREVISADO=NULL,@sTRASNFE=NULL
                         ,@sco_sucu_in={art.CoSucuIn.Trim()},@sco_us_in={art.CoUsIn.Trim()},@sMaquina=''";
             db.Database.ExecuteSqlInterpolated(saArtPrecio);
@@ -195,10 +195,10 @@
             #endregion
 
             #region Actualizar articulo campos utilizados temporalmente
-            art.MontComi = 0;
-            art.Campo8 = null;
-            db.Entry(art).State = EntityState.Modified;
-            db.SaveChanges(); 
+            //art.MontComi = 0;
+            //art.Campo8 = null;
+            //db.Entry(art).State = EntityState.Modified;
+            //db.SaveChanges(); 
             #endregion
         }
         #endregion
